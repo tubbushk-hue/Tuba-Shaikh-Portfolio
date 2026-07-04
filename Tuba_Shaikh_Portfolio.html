@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuba Shaikh — Digital Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,680;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* unifying accent — used consistently across every section tone */
+    --gold:#D9A441;
+    --gold-deep:#A8752A;
+
+    /* section tones (each section gets its own, coordinated jewel tone) */
+    --navy:#1D2036;
+    --navy-soft:#262A47;
+    --plum:#3B2350;
+    --plum-soft:#472B5E;
+    --teal:#17322F;
+    --teal-soft:#1F423D;
+    --burgundy:#3A1730;
+
+    --cream:#F7F3EC;
+    --cream-card:#FFFFFF;
+    --sage:#EEF1E7;
+    --sage-card:#FFFFFF;
+    --blush:#F4EEF6;
+    --blush-card:#FFFFFF;
+
+    --text-on-dark:#F3F0FA;
+    --muted-on-dark:#B8B2CC;
+    --text-on-light:#2A2438;
+    --muted-on-light:#6E6780;
+
+    --line-dark: rgba(243,240,250,0.14);
+    --line-light: rgba(42,36,56,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth; width:100%; overflow-x:hidden;}
+  body{
+    background:var(--navy);
+    color:var(--text-on-dark);
+    font-family:'Inter',sans-serif;
+    width:100%;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px; width:100%;}
+  section{ position:relative; scroll-margin-top: 96px; width:100%; }
+  footer{ width:100%; }
+  .pad{ padding-top:110px; padding-bottom:110px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background:rgba(29,32,54,0.78);
+    border-bottom:1px solid var(--line-dark);
+  }
+  nav{
+    max-width:1100px;margin:0 auto;padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ font-family:'Fraunces',serif; font-size:20px; font-weight:680; letter-spacing:0.3px; color:var(--text-on-dark); }
+  .logo span{color:var(--gold);}
+  .navlinks{display:flex; gap:32px; font-size:14px; color:var(--muted-on-dark);}
+  .navlinks a{text-decoration:none; transition:color .25s;}
+  .navlinks a:hover{color:var(--text-on-dark);}
+
+  /* ---------- HERO (navy) ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:120px; padding-bottom:60px; background:var(--navy);
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:12px; letter-spacing:3px;
+    color:var(--gold); text-transform:uppercase; margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:var(--gold); display:inline-block; }
+  h1.display{
+    font-family:'Fraunces',serif; font-weight:560; font-size:clamp(40px,7vw,84px);
+    line-height:1.02; letter-spacing:-1.5px; max-width:900px; color:var(--text-on-dark);
+  }
+  h1.display em{ font-style:italic; font-weight:500; color:var(--gold); }
+  .hero-sub{ max-width:560px; margin-top:26px; font-size:17px; line-height:1.65; color:var(--muted-on-dark); }
+  .hero-cta{ margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14px;
+    padding:14px 26px; border-radius:999px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-solid{ background:var(--gold); color:#241606; }
+  .btn-solid:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(217,164,65,0.5); }
+  .btn-ghost{ border:1px solid var(--line-dark); color:var(--text-on-dark); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+  /* ---------- TICKER ---------- */
+  .ticker-wrap{
+    margin-top:70px; border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark);
+    padding:18px 0; overflow:hidden; white-space:nowrap; position:relative; width:100%; max-width:100%;
+  }
+  .ticker-wrap::before, .ticker-wrap::after{ content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
+  .ticker-wrap::before{ left:0; background:linear-gradient(90deg, var(--navy), transparent);}
+  .ticker-wrap::after{ right:0; background:linear-gradient(270deg, var(--navy), transparent);}
+  .ticker{ display:inline-flex; gap:40px; animation: scroll 32s linear infinite; }
+  .ticker span{ font-family:'Space Mono',monospace; font-size:13px; letter-spacing:1px; color:var(--muted-on-dark); }
+  .ticker span.hi{ color:var(--gold); }
+  .ticker-wrap:hover .ticker{ animation-play-state: paused; }
+  @keyframes scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:52px; }
+  .num{ font-family:'Space Mono',monospace; font-size:13px; color:var(--gold); }
+  h2.h-title{ font-family:'Fraunces',serif; font-weight:560; font-size:clamp(28px,4vw,42px); letter-spacing:-0.5px; }
+  .fade-up{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .fade-up.in{ opacity:1; transform:translateY(0); }
+
+  /* dark-section text defaults */
+  .on-dark .h-title{ color:var(--text-on-dark); }
+  .on-light .h-title{ color:var(--text-on-light); }
+  .on-light .num{ color:var(--gold-deep); }
+
+  /* ---------- ABOUT (cream) ---------- */
+  .tone-cream{ background:var(--cream); color:var(--text-on-light); }
+  .about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:60px; align-items:start; min-width:0; }
+  .about-text p{ font-size:16.5px; line-height:1.8; color:var(--text-on-light); margin-bottom:18px; }
+  .stat-strip{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .stat{ border:1px solid var(--line-light); border-radius:14px; padding:22px; background:var(--cream-card); }
+  .stat b{ display:block; font-family:'Fraunces',serif; font-size:30px; color:var(--gold-deep); font-weight:560; }
+  .stat span{ font-size:12.5px; color:var(--muted-on-light); font-family:'Space Mono',monospace; }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- EXPERIENCE (plum, centered) ---------- */
+  .tone-plum{ background:var(--plum); color:var(--text-on-dark); }
+  .card{
+    border:1px solid var(--line-dark); border-radius:20px; padding:38px;
+    background:var(--plum-soft); transition: border-color .3s ease, transform .3s ease; margin-bottom:26px;
+    max-width:760px;
+  }
+  .card:hover{ border-color: rgba(217,164,65,0.5); transform: translateY(-4px); }
+  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+  .card-role{ font-family:'Fraunces',serif; font-size:24px; font-weight:560; }
+  .card-org{ color:var(--gold); }
+  .card-meta{ font-family:'Space Mono',monospace; font-size:12px; color:var(--muted-on-dark); white-space:nowrap; margin-top:6px; }
+  .card ul{ margin-top:20px; padding-left:20px; color:var(--text-on-dark); font-size:15px; line-height:1.7; opacity:0.92; }
+  .card ul li{ margin-bottom:8px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+  .tag{
+    font-family:'Space Mono',monospace; font-size:11.5px; padding:6px 12px; border-radius:999px;
+    border:1px solid var(--line-dark); color:var(--gold); background:rgba(217,164,65,0.1);
+  }
+
+  /* ---------- PROJECTS (sage) ---------- */
+  .tone-sage{ background:var(--sage); color:var(--text-on-light); }
+  .tone-sage .card{
+    background:var(--sage-card); border:1px solid var(--line-light); color:var(--text-on-light);
+  }
+  .tone-sage .card-meta{ color:var(--muted-on-light); }
+  .tone-sage .card ul{ color:var(--text-on-light); opacity:0.85; }
+  .tone-sage .card-org{ color:var(--gold-deep); }
+  .tone-sage .card:hover{ border-color: rgba(168,117,42,0.5); }
+  .tone-sage .tag{ color:var(--gold-deep); border:1px solid var(--line-light); background:rgba(168,117,42,0.08); }
+
+  .next-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .next-card{ border:1px solid var(--line-light); border-radius:16px; padding:26px; background:var(--sage-card); }
+  .next-card .n-icon{ font-family:'Space Mono',monospace; color:var(--gold-deep); font-size:12px; margin-bottom:14px; }
+  .next-card h3{ font-family:'Fraunces',serif; font-size:19px; font-weight:560; margin-bottom:10px; color:var(--text-on-light); }
+  .next-card p{ font-size:14px; color:var(--muted-on-light); line-height:1.6; }
+  @media (max-width:800px){ .next-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- SKILLS (teal, centered) ---------- */
+  .tone-teal{ background:var(--teal); color:var(--text-on-dark); }
+  .skill-group{ margin-bottom:34px; }
+  .skill-group h4{
+    font-family:'Space Mono',monospace; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:14px;
+  }
+  .skill-chips{ display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    font-size:14px; padding:9px 16px; border-radius:10px; border:1px solid var(--line-dark);
+    color:var(--text-on-dark); background:var(--teal-soft); transition: all .25s ease;
+  }
+  .chip:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* ---------- CERTIFICATIONS (blush) ---------- */
+  .tone-blush{ background:var(--blush); color:var(--text-on-light); }
+  .cert-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  .cert{
+    border:1px solid var(--line-light); border-radius:14px; padding:22px 24px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    background:var(--blush-card);
+  }
+  .cert h5{ font-family:'Fraunces',serif; font-size:16.5px; font-weight:560; margin-bottom:4px; color:var(--text-on-light); }
+  .cert p{ font-size:12.5px; color:var(--muted-on-light); font-family:'Space Mono',monospace; }
+  .cert .mark{ color:var(--gold-deep); font-size:20px; }
+  @media (max-width:800px){ .cert-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER (burgundy) ---------- */
+  footer{
+    background:var(--burgundy); color:var(--text-on-dark); padding:100px 0 50px;
+    border-radius:36px 36px 0 0; margin-top:0;
+  }
+  .foot-title{ font-family:'Fraunces',serif; font-size:clamp(32px,5vw,58px); font-weight:560; letter-spacing:-1px; max-width:640px; color:var(--text-on-dark); }
+  .foot-title em{ font-style:italic; color:var(--gold); }
+  .foot-sub{ margin-top:18px; font-size:16px; color:var(--muted-on-dark); max-width:480px; }
+  .foot-cta{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-dark{ background:var(--gold); color:#241606; }
+  .btn-dark:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -10px rgba(217,164,65,0.5); }
+  .btn-ghost-foot{ border:1px solid var(--line-dark); color:var(--text-on-dark); }
+  .btn-ghost-foot:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+  .foot-bottom{
+    margin-top:90px; padding-top:26px; border-top:1px solid var(--line-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:13px; color:var(--muted-on-dark);
+  }
+  .foot-note{ font-style:italic; }
+
+  @media (max-width:640px){
+    .wrap{ padding:0 20px; }
+    .pad{ padding-top:80px; padding-bottom:80px; }
+    .navlinks{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Tuba<span>.</span>Shaikh</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Digital Marketing · Mumbai, India</div>
+    <h1 class="display">Content, strategy,<br>and a bit of <em>code.</em></h1>
+    <p class="hero-sub">I build campaigns that move numbers — SEO, content, and paid media — and I'm teaching myself the tools to build the products behind them too.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="mailto:tubbushk@gmail.com">Let's work together</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/tuba-shaikh2007" target="_blank" rel="noopener">View LinkedIn ↗</a>
+    </div>
+    <div class="ticker-wrap">
+      <div class="ticker" id="ticker"></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="tone-cream on-light">
+  <div class="wrap pad">
+    <div class="section-head fade-up">
+      <span class="num">01</span>
+      <h2 class="h-title">About</h2>
+    </div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>I'm passionate about creating impactful digital experiences through content, marketing, and technology. My work spans content marketing, SEO, keyword research, competitor analysis, and running full digital campaigns — using tools like Google Analytics, Google Search Console, Microsoft Clarity, Google Ads, Meta Ads, and Canva to improve visibility and engagement.</p>
+        <p>Alongside marketing, I'm exploring AI-assisted web development, website building, and iOS app development. I like solving problems, thinking creatively, and building things that sit at the intersection of marketing and technology.</p>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><b>5</b><span>CERTIFICATIONS EARNED</span></div>
+        <div class="stat"><b>1</b><span>ACTIVE INTERNSHIP</span></div>
+        <div class="stat"><b>400+</b><span>PROFESSIONAL NETWORK</span></div>
+        <div class="stat"><b>1</b><span>PWA IN PROGRESS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="tone-plum on-dark">
+  <div class="wrap pad">
+    <div class="section-head fade-up">
+      <span class="num">02</span>
+      <h2 class="h-title">Experience</h2>
+    </div>
+    <div class="card fade-up">
+      <div class="card-top">
+        <div>
+          <div class="card-role">Digital Marketing Intern — <span class="card-org">Iqra Technology</span></div>
+        </div>
+        <div class="card-meta">FULL-TIME · MUMBAI, MAHARASHTRA</div>
+      </div>
+      <ul>
+        <li>Managed email marketing and hosting-service coordination as part of ongoing digital marketing initiatives.</li>
+        <li>Contributed to content marketing, SEO, and campaign optimization for client visibility.</li>
+        <li>Supported broader marketing operations across brand and growth-focused projects.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Email Marketing</span>
+        <span class="tag">Hosting Services</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Content Marketing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="tone-sage on-light">
+  <div class="wrap pad">
+    <div class="section-head fade-up">
+      <span class="num">03</span>
+      <h2 class="h-title">Projects</h2>
+    </div>
+    <div class="card fade-up">
+      <div class="card-top">
+        <div>
+          <div class="card-role">Word-to-Word Quran Translation Platform</div>
+        </div>
+        <div class="card-meta">JUL 2026 — PRESENT</div>
+      </div>
+      <ul>
+        <li>Building a Progressive Web App (PWA) offering fast, responsive, word-for-word Quran translation.</li>
+        <li>Designed for accessibility and smooth performance across devices, from concept through implementation.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">GitHub</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">PWA</span>
+        <span class="tag">Responsive Design</span>
+      </div>
+    </div>
+
+    <div class="section-head fade-up" style="margin-top:64px;">
+      <span class="num">→</span>
+      <h2 class="h-title" style="font-size:24px;">What I'm building next</h2>
+    </div>
+    <div class="next-grid fade-up">
+      <div class="next-card">
+        <div class="n-icon">01 · WEB</div>
+        <h3>AI-assisted web development</h3>
+        <p>Using AI tools like Claude to design and ship faster, cleaner websites.</p>
+      </div>
+      <div class="next-card">
+        <div class="n-icon">02 · BUILD</div>
+        <h3>Website building</h3>
+        <p>Turning marketing ideas into real, working pages — end to end.</p>
+      </div>
+      <div class="next-card">
+        <div class="n-icon">03 · MOBILE</div>
+        <h3>iOS app development</h3>
+        <p>Learning to bring product ideas onto mobile, starting from the ground up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="tone-teal on-dark">
+  <div class="wrap pad">
+    <div class="section-head fade-up">
+      <span class="num">04</span>
+      <h2 class="h-title">Skills</h2>
+    </div>
+    <div class="fade-up">
+      <div class="skill-group">
+        <h4>Marketing</h4>
+        <div class="skill-chips">
+          <span class="chip">Digital Marketing</span>
+          <span class="chip">Content Marketing</span>
+          <span class="chip">SEO</span>
+          <span class="chip">Keyword Research</span>
+          <span class="chip">Competitor Analysis</span>
+          <span class="chip">Email Marketing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools &amp; Platforms</h4>
+        <div class="skill-chips">
+          <span class="chip">Google Analytics</span>
+          <span class="chip">Google Search Console</span>
+          <span class="chip">Microsoft Clarity</span>
+          <span class="chip">Google Ads</span>
+          <span class="chip">Meta Ads</span>
+          <span class="chip">Canva</span>
+          <span class="chip">WordPress</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>AI &amp; Development</h4>
+        <div class="skill-chips">
+          <span class="chip">ChatGPT</span>
+          <span class="chip">Claude AI</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Web Development</span>
+          <span class="chip">Mobile App Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs" class="tone-blush on-light">
+  <div class="wrap pad">
+    <div class="section-head fade-up">
+      <span class="num">05</span>
+      <h2 class="h-title">Licenses &amp; Certifications</h2>
+    </div>
+    <div class="cert-grid fade-up">
+      <div class="cert">
+        <div><h5>Google Ads for Beginners</h5><p>COURSERA · JUN 2026</p></div>
+        <div class="mark">✓</div>
+      </div>
+      <div class="cert">
+        <div><h5>Introduction to Model Context Protocol</h5><p>ANTHROPIC · MAY 2026</p></div>
+        <div class="mark">✓</div>
+      </div>
+      <div class="cert">
+        <div><h5>Introduction to Agent Skills</h5><p>ANTHROPIC</p></div>
+        <div class="mark">✓</div>
+      </div>
+      <div class="cert">
+        <div><h5>Claude Code in Action</h5><p>ANTHROPIC</p></div>
+        <div class="mark">✓</div>
+      </div>
+      <div class="cert">
+        <div><h5>Claude with the Anthropic API</h5><p>ANTHROPIC</p></div>
+        <div class="mark">✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-title">Let's build something <em>worth measuring.</em></div>
+    <p class="foot-sub">Open to marketing roles, internships, and collaborations where content, strategy, and a bit of code all matter.</p>
+    <div class="foot-cta">
+      <a class="btn btn-dark" href="mailto:tubbushk@gmail.com">Email me</a>
+      <a class="btn btn-ghost-foot" href="https://www.linkedin.com/in/tuba-shaikh2007" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost-foot" href="https://www.instagram.com/tubbu.s01" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="btn btn-ghost-foot" href="https://wa.me/tubbu.s22" target="_blank" rel="noopener">WhatsApp ↗</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Tuba Shaikh — Mumbai, Maharashtra, India</span>
+      <span class="foot-note">tubbushk@gmail.com · @tubbu.s01 · @tubbu.s22</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const words = ["SEO","KEYWORD RESEARCH","CONTENT MARKETING","COMPETITOR ANALYSIS","GOOGLE ADS","META ADS","GOOGLE ANALYTICS","WORDPRESS","JAVASCRIPT","CLAUDE AI","PWA DEVELOPMENT","EMAIL MARKETING"];
+  const tickerEl = document.getElementById('ticker');
+  function buildTicker(){
+    let html = '';
+    for(let rep=0; rep<2; rep++){
+      words.forEach((w,i)=>{
+        const hi = (i % 3 === 0) ? 'hi' : '';
+        html += `<span class="${hi}">${w}</span><span>·</span>`;
+      });
+    }
+    tickerEl.innerHTML = html;
+  }
+  buildTicker();
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced){ document.getElementById('ticker').style.animation = 'none'; }
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
